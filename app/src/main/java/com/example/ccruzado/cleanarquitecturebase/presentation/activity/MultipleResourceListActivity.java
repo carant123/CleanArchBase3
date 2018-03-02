@@ -29,8 +29,8 @@ import butterknife.BindView;
 
 public class MultipleResourceListActivity extends BaseActivity implements ListaMultipleResourcePresenter.View {
 
-    ListaMultipleResourcePresenter presenter = new ListaMultipleResourcePresenter();
-    //@Inject ListaMultipleResourcePresenter presenter;
+    //ListaMultipleResourcePresenter presenter = new ListaMultipleResourcePresenter();
+    @Inject ListaMultipleResourcePresenter presenter;
     @BindView(R.id.recycleViewList) RecyclerView recycleViewList;
     private Context mContext;
     private AdapterRetrofit adapter;

@@ -22,17 +22,15 @@ import io.reactivex.schedulers.Schedulers;
 
 public class UC_ListaMultipleResource extends UseCase<MultipleResource> {
 
-    private final Repository repository;
-
-
+    private Repository repository;
 
 /*    @Inject public UC_ListaMultipleResource(@Named("executor_thread") Scheduler executorThread,
-                                    @Named("ui_thread") Scheduler uiThread,
-                                    Repository repository) {
+                                    @Named("ui_thread") Scheduler uiThread) {
         super(executorThread, uiThread);
-        this.repository = repository;
+        this.repository = new MultipleResourceApiData();
     }*/
 
+    @Inject
     public UC_ListaMultipleResource() {
         super(Schedulers.io(), AndroidSchedulers.mainThread());
         this.repository = new MultipleResourceApiData();

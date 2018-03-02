@@ -24,6 +24,7 @@ public class MultipleResourceApiData implements Repository {
     @Inject
     ApiService apiservice;
 
+
     public MultipleResourceApiData() {
         DaggerActivityComponent.builder()
                 .appComponent(StartApplication.getAppComponent())

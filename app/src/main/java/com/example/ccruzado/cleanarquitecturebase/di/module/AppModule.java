@@ -29,11 +29,11 @@ public class AppModule {
         this.mApplication = mApplication;
     }
 
-/*    @Provides
+    @Provides
     @Singleton
     public Repository provideRepository(MultipleResourceApiData multipleResourceApiData) {
         return multipleResourceApiData;
-    }*/
+    }
 
 /*    @Provides
     @Singleton

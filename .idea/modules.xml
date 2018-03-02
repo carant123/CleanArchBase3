@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CleanArchBase-master.iml" filepath="$PROJECT_DIR$/CleanArchBase-master.iml" />
+      <module fileurl="file://C:\Users\ccruzado\AndroidStudioProjects\CleanArchBase2\CleanArchBase-master.iml" filepath="C:\Users\ccruzado\AndroidStudioProjects\CleanArchBase2\CleanArchBase-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CleanArchBase2.iml" filepath="$PROJECT_DIR$/CleanArchBase2.iml" />
       <module fileurl="file://C:\Users\Carlos\AndroidStudioProjects\CleanArchBase-master\CleanArquitectureBase.iml" filepath="C:\Users\Carlos\AndroidStudioProjects\CleanArchBase-master\CleanArquitectureBase.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

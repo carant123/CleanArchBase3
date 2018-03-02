@@ -21,12 +21,18 @@ import io.reactivex.annotations.NonNull;
 
 public class ListaMultipleResourcePresenter extends BasePresenter<ListaMultipleResourcePresenter.View> {
 
-    private UC_ListaMultipleResource uc_listaMultipleResource = new UC_ListaMultipleResource();
+
+    UC_ListaMultipleResource uc_listaMultipleResource;
 
 /*    @Inject
-    public ListaMultipleResourcePresenter(@NonNull UC_ListaMultipleResource uc_listaMultipleResource) {
+    public ListaMultipleResourcePresenter(UC_ListaMultipleResource uc_listaMultipleResource) {
         this.uc_listaMultipleResource = uc_listaMultipleResource;
     }*/
+
+    @Inject
+    public ListaMultipleResourcePresenter(UC_ListaMultipleResource uc_listaMultipleResource) {
+        this.uc_listaMultipleResource = uc_listaMultipleResource;
+    }
 
 
     @Override

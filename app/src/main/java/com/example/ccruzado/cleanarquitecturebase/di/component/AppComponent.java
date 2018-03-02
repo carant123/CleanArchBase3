@@ -10,6 +10,7 @@ import com.example.ccruzado.cleanarquitecturebase.di.module.NetModule;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import io.reactivex.Scheduler;
 
 /**
  * Created by ccruzado on 22/02/2018.
@@ -24,6 +25,9 @@ public interface AppComponent {
     Application getApplication();
 
     Context getContext();
+
+/*    Scheduler provideExecutorThread();
+    Scheduler provideUiThread();*/
 
 
 }
