@@ -1,11 +1,11 @@
 package com.example.ccruzado.cleanarquitecturebase;
 
 import android.app.Application;
-import android.arch.persistence.room.Room;
 
-import com.example.ccruzado.cleanarquitecturebase.di.component.AppComponent;
-import com.example.ccruzado.cleanarquitecturebase.di.component.DaggerAppComponent;
-import com.example.ccruzado.cleanarquitecturebase.di.module.AppModule;
+import com.example.ccruzado.cleanarquitecturebase.di.component.ApplicationComponent;
+import com.example.ccruzado.cleanarquitecturebase.di.component.DaggerApplicationComponent;
+import com.example.ccruzado.cleanarquitecturebase.di.module.ApplicationModule;
+import com.example.ccruzado.cleanarquitecturebase.di.module.NetModule;
 
 /**
  * Created by ccruzado on 22/02/2018.
@@ -14,7 +14,7 @@ import com.example.ccruzado.cleanarquitecturebase.di.module.AppModule;
 public class StartApplication extends Application {
 
     private static StartApplication sInstance;
-    private static AppComponent appComponent;
+    private static ApplicationComponent appComponent;
     //private AppDatabase db;
 
     @Override
@@ -41,17 +41,16 @@ public class StartApplication extends Application {
     }
 
 
-
-
     private void initializeInjector() {
-        appComponent = DaggerAppComponent.builder()
-                .appModule(new AppModule(this))
+        appComponent = DaggerApplicationComponent.builder()
+                .applicationModule(new ApplicationModule(this))
+                .netModule(new NetModule())
                 .build();
         //appComponent.inject(this);
 
     }
 
-    public static AppComponent getAppComponent(){
+    public static ApplicationComponent getComponent(){
         return appComponent;
     }
 

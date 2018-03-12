@@ -2,7 +2,6 @@ package com.example.ccruzado.cleanarquitecturebase.data.repository;
 
 import com.example.ccruzado.cleanarquitecturebase.StartApplication;
 import com.example.ccruzado.cleanarquitecturebase.data.api.ApiService;
-import com.example.ccruzado.cleanarquitecturebase.di.component.DaggerActivityComponent;
 import com.example.ccruzado.cleanarquitecturebase.model.MultipleResource;
 import com.example.ccruzado.cleanarquitecturebase.model.Usuario;
 
@@ -12,6 +11,8 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.Observable;
+
+import static com.example.ccruzado.cleanarquitecturebase.StartApplication.getComponent;
 
 /**
  * Created by ccruzado on 23/02/2018.
@@ -24,9 +25,14 @@ public class UsuarioApiData implements Repository {
     ApiService apiservice;
 
     public UsuarioApiData() {
-        DaggerActivityComponent.builder()
+/*        DaggerActivityComponent.builder()
                 .appComponent(StartApplication.getAppComponent())
-                .build().inject(this);
+                .build().inject(this);*/
+
+       // ((StartApplication) StartApplication.getComponent()).getComponent().inject(this);
+
+        getComponent().inject(this);
+
     }
 
     @Override

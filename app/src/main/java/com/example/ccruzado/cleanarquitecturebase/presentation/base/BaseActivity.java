@@ -5,10 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import com.example.ccruzado.cleanarquitecturebase.R;
 import com.example.ccruzado.cleanarquitecturebase.StartApplication;
-import com.example.ccruzado.cleanarquitecturebase.di.component.ActivityComponent;
-import com.example.ccruzado.cleanarquitecturebase.di.component.DaggerActivityComponent;
 
 import butterknife.ButterKnife;
 
@@ -18,7 +15,8 @@ import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    private ActivityComponent activityComponent;
+   /* private ActivityComponent activityComponent;*/
+
     private Toolbar mToolbar;
 
     @Override
@@ -33,9 +31,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void initDagger() {
-        activityComponent = DaggerActivityComponent.builder()
+/*        activityComponent = DaggerActivityComponent.builder()
                 .appComponent(((StartApplication) getApplication()).getAppComponent())
-                .build();
+                .build();*/
 
     }
 
@@ -47,9 +45,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         }*/
     }
 
-    public ActivityComponent getComponent() {
+/*    public ActivityComponent getComponent() {
         return activityComponent;
-    }
+    }*/
 
     @Nullable public Toolbar getToolbar() {
         return mToolbar;

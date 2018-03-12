@@ -5,7 +5,6 @@ import android.content.Context;
 
 import com.example.ccruzado.cleanarquitecturebase.data.repository.MultipleResourceApiData;
 import com.example.ccruzado.cleanarquitecturebase.data.repository.Repository;
-import com.example.ccruzado.cleanarquitecturebase.data.repository.UsuarioApiData;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -17,39 +16,17 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by ccruzado on 22/02/2018.
+ * Created by ccruzado on 12/03/2018.
  */
 
 @Module
-public class AppModule {
+public class ApplicationModule {
 
     private Application mApplication;
 
-    public AppModule(Application mApplication) {
+    public ApplicationModule(Application mApplication) {
         this.mApplication = mApplication;
     }
-
-    @Provides
-    @Singleton
-    public Repository provideRepository(MultipleResourceApiData multipleResourceApiData) {
-        return multipleResourceApiData;
-    }
-
-/*    @Provides
-    @Singleton
-    public Repository provideRepository(){
-        return new MultipleResourceApiData();
-    }*/
-
-
-
-
-/*    @Provides
-    @Singleton
-    Repository provideRepository2(UsuarioApiData usuarioApiData) {
-        return usuarioApiData;
-    }*/
-
 
 
     @Provides
@@ -72,11 +49,19 @@ public class AppModule {
         return Schedulers.io();
     }
 
+
     @Provides
-    @Named("ui_thread") Scheduler provideUiThread() {
+    @Named("ui_thread")
+    Scheduler provideUiThread() {
         return AndroidSchedulers.mainThread();
     }
 
+
+    @Provides
+    @Singleton
+    public Repository provideRepository(MultipleResourceApiData multipleResourceApiData) {
+        return multipleResourceApiData;
+    }
 
 
 }

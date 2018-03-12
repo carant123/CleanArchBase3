@@ -7,14 +7,10 @@ import android.view.View;
 
 import com.example.ccruzado.cleanarquitecturebase.R;
 import com.example.ccruzado.cleanarquitecturebase.StartApplication;
-import com.example.ccruzado.cleanarquitecturebase.di.component.ActivityComponent;
-import com.example.ccruzado.cleanarquitecturebase.domain.model.Usuario;
 import com.example.ccruzado.cleanarquitecturebase.presentation.base.BaseActivity;
 import com.example.ccruzado.cleanarquitecturebase.presentation.presenter.UsuarioListPresenter;
 
 import java.util.List;
-
-import javax.inject.Inject;
 
 import butterknife.BindView;
 
@@ -32,7 +28,9 @@ public class UsuarioListActivity extends BaseActivity implements UsuarioListPres
 
     @Override
     protected void init() {
-        getComponent().inject(this);
+
+        ((StartApplication) getApplication()).getComponent().inject(this);
+
         presenter.setView(this);
         disableTitleFromToolbar();
         initializeRecyclerView();

@@ -1,20 +1,14 @@
 package com.example.ccruzado.cleanarquitecturebase.di.module;
 
 import com.example.ccruzado.cleanarquitecturebase.data.api.ApiService;
-import com.example.ccruzado.cleanarquitecturebase.di.PerActivityScope;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.concurrent.TimeUnit;
 
-import javax.inject.Named;
-
 import dagger.Module;
 import dagger.Provides;
-import io.reactivex.Scheduler;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -36,20 +30,19 @@ public class NetModule {
 
 
 
-    @PerActivityScope
     @Provides
     ApiService provideApiService() {
-/*        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
-                .build();*/
+                .build();
 
         Gson gson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                //.client(okHttpClient)
+                .client(okHttpClient)
                 //.baseUrl("http://restcountries.eu/")
                 .baseUrl("https://reqres.in")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
