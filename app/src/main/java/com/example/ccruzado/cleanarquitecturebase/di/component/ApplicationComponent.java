@@ -2,9 +2,11 @@ package com.example.ccruzado.cleanarquitecturebase.di.component;
 
 import com.example.ccruzado.cleanarquitecturebase.data.api.ApiService;
 import com.example.ccruzado.cleanarquitecturebase.data.repository.MultipleResourceApiData;
+import com.example.ccruzado.cleanarquitecturebase.data.repository.Repository;
 import com.example.ccruzado.cleanarquitecturebase.data.repository.UsuarioApiData;
 import com.example.ccruzado.cleanarquitecturebase.di.module.ApplicationModule;
 import com.example.ccruzado.cleanarquitecturebase.di.module.NetModule;
+import com.example.ccruzado.cleanarquitecturebase.di.module.RepositoryModule;
 import com.example.ccruzado.cleanarquitecturebase.presentation.activity.MultipleResourceListActivity;
 import com.example.ccruzado.cleanarquitecturebase.presentation.activity.UsuarioListActivity;
 
@@ -17,7 +19,7 @@ import dagger.Component;
  */
 
 @Singleton
-@Component(modules = {ApplicationModule.class, NetModule.class})
+@Component(modules = {ApplicationModule.class, NetModule.class, RepositoryModule.class})
 public interface ApplicationComponent {
 
     void inject(UsuarioListActivity activity);
@@ -26,6 +28,6 @@ public interface ApplicationComponent {
     void inject(UsuarioApiData databaseapi);
     void inject(MultipleResourceApiData multipleResourceApiData);
 
-    ApiService getApiService();
 
+    ApiService getApiService();
 }

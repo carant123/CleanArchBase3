@@ -57,13 +57,4 @@ public class ApplicationModule {
     }
 
 
-    @Provides
-    @Named("Repository_MultipleResourceApiData")
-    Repository provideRepository() {
-        return new MultipleResourceApiData();
-    }
-
-
-
-
 }

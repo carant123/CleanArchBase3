@@ -1,18 +1,28 @@
 package com.example.ccruzado.cleanarquitecturebase.di.module;
 
 import com.example.ccruzado.cleanarquitecturebase.data.api.ApiService;
+import com.example.ccruzado.cleanarquitecturebase.data.api.SoapApi;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.convert.AnnotationStrategy;
+import org.simpleframework.xml.core.Persister;
+import org.simpleframework.xml.strategy.Strategy;
 
 import java.util.concurrent.TimeUnit;
 
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
+import retrofit.RestAdapter;
+import retrofit.client.OkClient;
+import retrofit.converter.SimpleXMLConverter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 /**
  * Created by ccruzado on 22/02/2018.
@@ -53,17 +63,74 @@ public class NetModule {
     }
 
 
-/*    @Named("executor_thread")
     @Provides
-    Scheduler provideExecutorThread() {
-        return Schedulers.io();
+    SoapApi provideSoapService() {
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .build();
+
+        Strategy strategy = new AnnotationStrategy();
+
+        Serializer serializer = new Persister(strategy);
+
+/*        Retrofit retrofit = new Retrofit.Builder()
+                .client(okHttpClient)
+                //.baseUrl("http://restcountries.eu/")
+                .baseUrl("https://reqres.in")
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(
+                        SimpleXmlConverterFactory.createNonStrict(
+                                new Persister(strategy // important part!
+                                )
+                        ))
+                .build();*/
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .client(okHttpClient)
+                //.baseUrl("http://restcountries.eu/")
+                .baseUrl("https://reqres.in")
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(SimpleXmlConverterFactory.create(serializer))
+                .build();
+
+
+        return retrofit.create(SoapApi.class);
+
     }
 
 
-    @Named("ui_thread")
-    @Provides
-    Scheduler provideUiThread() {
-        return AndroidSchedulers.mainThread();
+
+
+/*    @Provides
+    public UsStatesApi providesApi(){
+
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        Strategy strategy = new AnnotationStrategy();
+
+        Serializer serializer = new Persister(strategy);
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .connectTimeout(2, TimeUnit.MINUTES)
+                .writeTimeout(2, TimeUnit.MINUTES)
+                .readTimeout(2, TimeUnit.MINUTES)
+                .build();
+
+        Retrofit retrofit =  new Retrofit.Builder()
+                .addConverterFactory(SimpleXmlConverterFactory.create(serializer))
+                .baseUrl("http://www.webservicex.net/")
+                .client(okHttpClient)
+                .build();
+
+        return retrofit.create( UsStatesApi.class);
+
     }*/
+
 
 }

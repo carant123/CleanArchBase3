@@ -1,5 +1,6 @@
 package com.example.ccruzado.cleanarquitecturebase.data.api;
 
+import com.example.ccruzado.cleanarquitecturebase.data.api.RequestResponse.Post;
 import com.example.ccruzado.cleanarquitecturebase.model.MultipleResource;
 import com.example.ccruzado.cleanarquitecturebase.model.Usuario;
 
@@ -7,6 +8,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 /**
@@ -23,5 +25,8 @@ public interface ApiService {
 
     @GET("/api/unknown")
     Observable<MultipleResource> listMultiple();
+
+    @POST("/posts")
+    Observable<Post> postPost(Post post);
 
 }
