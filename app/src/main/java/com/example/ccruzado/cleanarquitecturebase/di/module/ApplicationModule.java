@@ -58,10 +58,12 @@ public class ApplicationModule {
 
 
     @Provides
-    @Singleton
-    public Repository provideRepository(MultipleResourceApiData multipleResourceApiData) {
-        return multipleResourceApiData;
+    @Named("Repository_MultipleResourceApiData")
+    Repository provideRepository() {
+        return new MultipleResourceApiData();
     }
+
+
 
 
 }

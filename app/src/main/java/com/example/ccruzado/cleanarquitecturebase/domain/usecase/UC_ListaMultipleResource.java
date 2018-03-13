@@ -24,18 +24,12 @@ public class UC_ListaMultipleResource extends UseCase<MultipleResource> {
 
     private Repository repository;
 
-/*    @Inject public UC_ListaMultipleResource(@Named("executor_thread") Scheduler executorThread,
-                                    @Named("ui_thread") Scheduler uiThread) {
+    @Inject public UC_ListaMultipleResource(@Named("executor_thread") Scheduler executorThread,
+                                            @Named("ui_thread") Scheduler uiThread,
+                                            @Named("Repository_MultipleResourceApiData") Repository repository        ) {
         super(executorThread, uiThread);
-        this.repository = new MultipleResourceApiData();
-    }*/
-
-    @Inject
-    public UC_ListaMultipleResource() {
-        super(Schedulers.io(), AndroidSchedulers.mainThread());
-        this.repository = new MultipleResourceApiData();
+        this.repository = repository;
     }
-
 
 
     @Override
