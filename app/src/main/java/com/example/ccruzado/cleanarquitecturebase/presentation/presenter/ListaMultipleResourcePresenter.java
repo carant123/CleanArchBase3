@@ -24,11 +24,6 @@ public class ListaMultipleResourcePresenter extends BasePresenter<ListaMultipleR
 
     UC_ListaMultipleResource uc_listaMultipleResource;
 
-/*    @Inject
-    public ListaMultipleResourcePresenter(UC_ListaMultipleResource uc_listaMultipleResource) {
-        this.uc_listaMultipleResource = uc_listaMultipleResource;
-    }*/
-
     @Inject
     public ListaMultipleResourcePresenter(UC_ListaMultipleResource uc_listaMultipleResource) {
         this.uc_listaMultipleResource = uc_listaMultipleResource;

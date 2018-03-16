@@ -6,6 +6,7 @@ import com.example.ccruzado.cleanarquitecturebase.model.MultipleResource;
 
 import com.example.ccruzado.cleanarquitecturebase.data.api.RequestResponse.model.request.*;
 import com.example.ccruzado.cleanarquitecturebase.data.api.RequestResponse.model.response.*;
+import com.example.ccruzado.cleanarquitecturebase.model.NewDataSet;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
@@ -38,4 +39,12 @@ public interface SoapApi {
 
     @POST("/posts")
     Observable<Post> postPost(@Body Post post);
+
+
+    @GET("/GetCountries")
+    Observable<NewDataSet> GetCountries();
+
+
+
+
 }

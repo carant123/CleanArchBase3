@@ -91,7 +91,7 @@ public class NetModule {
         Retrofit retrofit = new Retrofit.Builder()
                 .client(okHttpClient)
                 //.baseUrl("http://restcountries.eu/")
-                .baseUrl("https://reqres.in")
+                .baseUrl("http://www.webservicex.net/country.asmx")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(SimpleXmlConverterFactory.create(serializer))
                 .build();
